@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% block head_title %}
+    Create New Post
+{% endblock head_title %}
+{% block head_extra %}
+    {{ form.media }}
+{% endblock head_extra %}
+{% include 'blog/message_display.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>
+                    Post Form
+                </h1>
+                <form method="POST"  enctype="multipart/form-data"
+                      action="{% url 'blog:post_create' %}">{% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Create Post">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+

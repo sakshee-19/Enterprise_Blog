@@ -1,0 +1,70 @@
+{% extends 'blog/base.html' %}
+
+{% block head_title %}
+    {{ post.title }}
+{% endblock head_title %}
+{% include 'blog/message_display.html' %}
+{% block content %}
+    {% block style %}
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% endblock style %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" class="img-responsive" alt="Blog Post image">
+                {% endif %}
+                <h2>
+                    <a href="{% url 'blog:post_detail' slug=post.slug %}">
+                        {{ post.title }}
+                        <small>
+                            {{ post.updated|timesince }} ago
+                        </small>
+                    </a>
+                </h2>
+                <p>
+                    Author: {{ post.user }}
+                </p>
+{#                <p class="content-markdown">#}
+{#                    {{ post.post_content }}#}
+{#                </p>#}
+                 <div class='content-markdown'>{{ post.post_content }}</div>
+
+                <br>
+                <div class="fb-like" data-href="{{ request.build_absolute_uri }}"
+                     data-layout="standard"
+                     data-action="like" data-size="small" data-show-faces="true"
+                     data-share="true">
+                </div>
+
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                   class="fa fa-facebook">
+
+                </a>
+                <a href="https://twitter.com/home?status={{ share_string|truncatechars:30 }}%20{{ request.build_absolute_uri }}"
+                   class="fa fa-twitter">
+                </a>
+
+                <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'
+                   class="fa fa-google-plus">
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}
+                         /&title={{ post.title }}&summary={{ share_string|truncatechars:30 }}&source={{ request.build_absolute_uri }}"
+                   class="fa fa-linkedin">
+                </a>
+                <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}/&title={{ post.title }}"
+                   class="fa fa-reddit">
+                </a>
+
+                <hr>
+                <div class="fb-comments"
+                     data-href="{{ request.build_absolute_uri }}"
+                     data-numposts="5">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
