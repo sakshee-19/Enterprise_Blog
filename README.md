@@ -1,6 +1,6 @@
 # Project Title
 
-entrepreneurAdicr is web platform created for developing Entrepreneur Society in Indian Institute of Information Technology, Vadodara.
+EntrepreneurAdic is web platform created for developing Entrepreneur Society in Indian Institute of Information Technology, Vadodara.
 Our platform will provide one webApp for getting acquainted with the Entrepreneurship spirit with in our college. This platform will mainly 
 focus on the four aspects of Entrepreneur spirit i.e 
 
